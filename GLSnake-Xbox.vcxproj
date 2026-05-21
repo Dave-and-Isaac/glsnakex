@@ -56,7 +56,7 @@
   <!-- If RXGL_DIR is not set, RXGL is expected as a sibling directory.   -->
   <PropertyGroup>
     <XboxSDKDir>$(RXDK_LIBS)</XboxSDKDir>
-    <RXGLDir Condition="'$(RXGL_DIR)'!=''">$(RXGL_DIR)</RXGLDir>
+    <RXGLDir Condition="'$(RXGL_DIR)'!=''">$(RXGL_DIR)\</RXGLDir>
     <RXGLDir Condition="'$(RXGL_DIR)'==''">$(ProjectDir)..\RXGL\</RXGLDir>
   </PropertyGroup>
 

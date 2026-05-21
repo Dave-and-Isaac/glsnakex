@@ -10,7 +10,8 @@ echo  Default (press Enter): %~dp0..\RXGL\
 echo  Use this if you cloned RXGL next to this repo.
 echo.
 set /p RXGL_PATH="  RXGL path (or Enter for default): "
-if "%RXGL_PATH%"=="" set "RXGL_PATH=%~dp0..\RXGL\"
+if "%RXGL_PATH%"=="" set "RXGL_PATH=%~dp0..\"
+if "%RXGL_PATH:~-1%"=="\" set "RXGL_PATH=%RXGL_PATH:~0,-1%"
 echo.
 setx RXGL_DIR "%RXGL_PATH%"
 echo.
