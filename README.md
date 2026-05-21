@@ -20,29 +20,54 @@ Supports 480i, 480p, and 720p output depending on dashboard video settings.
 
 ## Prerequisites
 
-You need the following already set up on your build machine:
+### 1. Visual Studio 2022
 
-- **Visual Studio 2022** with the Desktop C++ workload (MSVC v143, 32-bit tools)
-- **RXDK** — set the `RXDK_LIBS` environment variable to your install path (e.g. `C:\RXDK\`). Must end with a backslash.
-- **RXGL** — set the `RXGL_DIR` environment variable to your RXGL root (e.g. `C:\dev\RXGL\`). Must end with a backslash.
+Install [Visual Studio 2022](https://visualstudio.microsoft.com/) with the **Desktop development with C++** workload. The 32-bit MSVC v143 tools are included automatically.
 
-### Environment variables
+### 2. RXDK
 
-| Variable | Example | Required |
-|----------|---------|----------|
-| `RXDK_LIBS` | `C:\RXDK\` | Yes |
-| `RXGL_DIR` | `C:\dev\RXGL\` | No — if omitted, RXGL is expected as a sibling directory named `RXGL` next to this repo |
+Install RXDK, then set the `RXDK_LIBS` environment variable to your installation path.
 
-If you have RXGL cloned alongside this repo (sibling layout below), `RXGL_DIR` is not needed:
+**How to set an environment variable on Windows:**
+> Press **Win + S** and search for **"Edit the system environment variables"**, then click **Environment Variables…** at the bottom of the dialog. Under *System variables* click **New** and enter the name and value. Click OK through all dialogs, then **restart Visual Studio** for the change to take effect.
+
+Or from an **Administrator** command prompt (then restart Visual Studio):
+```
+setx /M RXDK_LIBS "C:\RXDK\"
+```
+
+| Variable | Example value | Notes |
+|----------|--------------|-------|
+| `RXDK_LIBS` | `C:\RXDK\` | Must end with a backslash |
+
+### 3. RXGL
+
+Clone the [RXGL](https://github.com/Team-Resurgent/RXGL) repository somewhere on your machine. The project finds it in one of two ways — use whichever fits your setup:
+
+**Option A — sibling directory (no configuration needed)**
+
+Clone RXGL into the same parent folder as this repo and name it `RXGL`:
 
 ```
 your-folder\
-├── glsnake-xbox\       ← this repo
-└── RXGL\               ← RXGL root (sibling, no RXGL_DIR needed)
+├── glsnakex\     ← this repo
+└── RXGL\         ← RXGL repo root
     └── RXGL\
         ├── rxgl_api.h
         └── ...
 ```
+
+**Option B — set `RXGL_DIR` (clone it anywhere)**
+
+Clone RXGL wherever you like, then set `RXGL_DIR` to its root path using the same steps as above for `RXDK_LIBS`:
+
+```
+setx /M RXGL_DIR "C:\dev\RXGL\"
+```
+
+| Variable | Example value | Notes |
+|----------|--------------|-------|
+| `RXGL_DIR` | `C:\dev\RXGL\` | Must end with a backslash |
 
 ## Building
 
