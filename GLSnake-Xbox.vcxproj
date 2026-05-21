@@ -72,7 +72,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <!-- xbox\ first so GL/glut.h, GL/gl.h, sys/timeb.h, windows.h stubs shadow SDK versions -->
-      <AdditionalIncludeDirectories>$(ProjectDir)xbox;$(ProjectDir);$(ProjectDir)RXGL\RXGL;$(VCToolsInstallDir)include;$(WindowsSdkDir)Include\$(WindowsSdkVersion)ucrt;$(XboxSDKDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)xbox;$(ProjectDir);$(ProjectDir)..\RXGL\RXGL;$(VCToolsInstallDir)include;$(WindowsSdkDir)Include\$(WindowsSdkVersion)ucrt;$(XboxSDKDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_XBOX;WIN32;HAVE_GLUT;HAVE_FTIME;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -116,7 +116,7 @@ XCOPY /C /Q /I /E /S /Y "$(ProjectDir)data" "$(OutDir)Deploy\data\"</Command>
       <Optimization>MaxSpeed</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(ProjectDir)xbox;$(ProjectDir);$(ProjectDir)RXGL\RXGL;$(VCToolsInstallDir)include;$(WindowsSdkDir)Include\$(WindowsSdkVersion)ucrt;$(XboxSDKDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)xbox;$(ProjectDir);$(ProjectDir)..\RXGL\RXGL;$(VCToolsInstallDir)include;$(WindowsSdkDir)Include\$(WindowsSdkVersion)ucrt;$(XboxSDKDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;_XBOX;WIN32;HAVE_GLUT;HAVE_FTIME;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -164,15 +164,15 @@ XCOPY /C /Q /I /E /S /Y "$(ProjectDir)data" "$(OutDir)Deploy\data\"</Command>
     <ClCompile Include="glsnake.c" />
 
     <!-- RXGL shim (OpenGL 1.x to D3D8) — populated via git submodule -->
-    <ClCompile Include="RXGL\RXGL\rxgl_core.cpp" />
-    <ClCompile Include="RXGL\RXGL\rxgl_renderstate.cpp" />
-    <ClCompile Include="RXGL\RXGL\rxgl_matrix.cpp" />
-    <ClCompile Include="RXGL\RXGL\rxgl_texture.cpp" />
-    <ClCompile Include="RXGL\RXGL\rxgl_lighting.cpp" />
-    <ClCompile Include="RXGL\RXGL\rxgl_immediate.cpp" />
-    <ClCompile Include="RXGL\RXGL\rxgl_arrays.cpp" />
-    <ClCompile Include="RXGL\RXGL\rxgl_displaylist.cpp" />
-    <ClCompile Include="RXGL\RXGL\rxgl_buffers.cpp" />
+    <ClCompile Include="..\RXGL\RXGL\rxgl_core.cpp" />
+    <ClCompile Include="..\RXGL\RXGL\rxgl_renderstate.cpp" />
+    <ClCompile Include="..\RXGL\RXGL\rxgl_matrix.cpp" />
+    <ClCompile Include="..\RXGL\RXGL\rxgl_texture.cpp" />
+    <ClCompile Include="..\RXGL\RXGL\rxgl_lighting.cpp" />
+    <ClCompile Include="..\RXGL\RXGL\rxgl_immediate.cpp" />
+    <ClCompile Include="..\RXGL\RXGL\rxgl_arrays.cpp" />
+    <ClCompile Include="..\RXGL\RXGL\rxgl_displaylist.cpp" />
+    <ClCompile Include="..\RXGL\RXGL\rxgl_buffers.cpp" />
   </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
