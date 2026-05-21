@@ -30,11 +30,7 @@ Install RXDK. The installer sets the `RXDK_LIBS` environment variable automatica
 
 ### 3. RXGL
 
-Clone the [RXGL](https://github.com/Team-Resurgent/RXGL) repository somewhere on your machine. The project finds it in one of two ways — use whichever fits your setup:
-
-**Option A — sibling directory (no configuration needed)**
-
-Clone RXGL into the same parent folder as this repo and name it `RXGL`:
+Clone [RXGL](https://github.com/Team-Resurgent/RXGL) into the **same parent folder** as this repo:
 
 ```
 your-folder\
@@ -45,20 +41,8 @@ your-folder\
         └── ...
 ```
 
-**Option B — set `RXGL_DIR` (clone it anywhere)**
-
-Clone RXGL wherever you like, then set `RXGL_DIR` to its root path (must end with a backslash).
-
-From an **Administrator** command prompt:
-```
-setx /M RXGL_DIR "C:\dev\RXGL\"
-```
-
-Or via the Windows GUI: press **Win + S**, search **"Edit the system environment variables"**, click **Environment Variables…**, and add a new System variable named `RXGL_DIR`.
-
-| Variable | Example value | Notes |
-|----------|--------------|-------|
-| `RXGL_DIR` | `C:\dev\RXGL\` | Must end with a backslash |
+If you cloned RXGL somewhere else, run **`setup.bat`** in the root of this repo.
+It will ask for your RXGL path and configure everything automatically.
 
 ## Building
 
