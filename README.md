@@ -47,7 +47,7 @@ your-folder\
 ## Building
 
 ```
-git clone https://github.com/Dave-and-Isaac/glsnake-xbox.git
+git clone https://github.com/Dave-and-Isaac/glsnakex.git
 ```
 
 Open `GLSnake-Xbox.sln` in Visual Studio 2022, select **Release | Win32**, and build.
