@@ -176,7 +176,6 @@ XCOPY /C /Q /I /E /S /Y "$(ProjectDir)data" "$(OutDir)Deploy\data\"</Command>
     <ClCompile Include="$(RXGLDir)RXGL\rxgl_immediate.cpp" />
     <ClCompile Include="$(RXGLDir)RXGL\rxgl_arrays.cpp" />
     <ClCompile Include="$(RXGLDir)RXGL\rxgl_displaylist.cpp" />
-    <ClCompile Include="$(RXGLDir)RXGL\rxgl_buffers.cpp" />
   </ItemGroup>
 
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
