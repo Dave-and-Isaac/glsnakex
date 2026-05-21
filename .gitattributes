@@ -1,0 +1,6 @@
+* text=auto eol=crlf
+*.png binary
+*.xbe binary
+*.exe binary
+*.pdb binary
+*.glsnake binary

@@ -116,11 +116,11 @@ static const unsigned char s_font8x8[96][8] = {
 };
 
 /* ---- Font texture atlas ---- */
-/* 128x64 GL_LUMINANCE_ALPHA: 16 chars/row, 6 rows.
- * Texel on = {0xFF,0xFF}, off = {0x00,0x00}. */
+/* 128x64 GL_RGBA: 16 chars/row, 6 rows.
+ * Texel on = {0xFF,0xFF,0xFF,0xFF}, off = {0x00,0x00,0x00,0x00}. */
 #define ATLAS_W 128
 #define ATLAS_H  64
-static unsigned char s_atlas[ATLAS_H * ATLAS_W * 2];
+static unsigned char s_atlas[ATLAS_H * ATLAS_W * 4];
 
 static void build_font_texture(void)
 {
@@ -133,10 +133,12 @@ static void build_font_texture(void)
             for (int b = 0; b < 8; b++) {
                 int px = col * 8 + b;
                 int py = row * 8 + r;
-                int offset = (py * ATLAS_W + px) * 2;
+                int offset = (py * ATLAS_W + px) * 4;
                 unsigned char v = ((byte >> (7 - b)) & 1) ? 0xFF : 0x00;
                 s_atlas[offset]     = v;
                 s_atlas[offset + 1] = v;
+                s_atlas[offset + 2] = v;
+                s_atlas[offset + 3] = v;
             }
         }
     }
@@ -147,9 +149,9 @@ static void build_font_texture(void)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE_ALPHA,
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
                  ATLAS_W, ATLAS_H, 0,
-                 GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE, s_atlas);
+                 GL_RGBA, GL_UNSIGNED_BYTE, s_atlas);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
