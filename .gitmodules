@@ -1,0 +1,3 @@
+[submodule "RXGL"]
+	path = RXGL
+	url = https://github.com/Team-Resurgent/RXGL.git

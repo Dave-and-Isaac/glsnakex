@@ -1,0 +1,21 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+*.opendb
+UpgradeLog*.htm
+
+# XBE / PE output (build artifacts)
+*.xbe
+*.exe
+*.pdb
+*.ilk
+
+# macOS
+.DS_Store
