@@ -26,19 +26,7 @@ Install [Visual Studio 2022](https://visualstudio.microsoft.com/) with the **Des
 
 ### 2. RXDK
 
-Install RXDK, then set the `RXDK_LIBS` environment variable to your installation path.
-
-**How to set an environment variable on Windows:**
-> Press **Win + S** and search for **"Edit the system environment variables"**, then click **Environment Variables…** at the bottom of the dialog. Under *System variables* click **New** and enter the name and value. Click OK through all dialogs, then **restart Visual Studio** for the change to take effect.
-
-Or from an **Administrator** command prompt (then restart Visual Studio):
-```
-setx /M RXDK_LIBS "C:\RXDK\"
-```
-
-| Variable | Example value | Notes |
-|----------|--------------|-------|
-| `RXDK_LIBS` | `C:\RXDK\` | Must end with a backslash |
+Install RXDK. The installer sets the `RXDK_LIBS` environment variable automatically — nothing else to do.
 
 ### 3. RXGL
 
@@ -59,11 +47,14 @@ your-folder\
 
 **Option B — set `RXGL_DIR` (clone it anywhere)**
 
-Clone RXGL wherever you like, then set `RXGL_DIR` to its root path using the same steps as above for `RXDK_LIBS`:
+Clone RXGL wherever you like, then set `RXGL_DIR` to its root path (must end with a backslash).
 
+From an **Administrator** command prompt:
 ```
 setx /M RXGL_DIR "C:\dev\RXGL\"
 ```
+
+Or via the Windows GUI: press **Win + S**, search **"Edit the system environment variables"**, click **Environment Variables…**, and add a new System variable named `RXGL_DIR`.
 
 | Variable | Example value | Notes |
 |----------|--------------|-------|
