@@ -18,6 +18,10 @@ Supports 480i, 480p, and 720p output depending on dashboard video settings.
 | Start | Controls overlay |
 | LT + RT + Back + Black | Return to dashboard |
 
+## Just want to play it?
+
+Download the latest release zip, unzip it, FTP the `glsnakex` folder to your Xbox, and run `default.xbe`.
+
 ## Prerequisites
 
 ### 1. Visual Studio 2022
