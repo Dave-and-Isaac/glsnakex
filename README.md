@@ -23,24 +23,24 @@ Supports 480i, 480p, and 720p output depending on dashboard video settings.
 You need the following already set up on your build machine:
 
 - **Visual Studio 2022** with the Desktop C++ workload (MSVC v143, 32-bit tools)
-- **RXDK** — Xbox Development Kit with `RXDK_LIBS` environment variable pointing to your install (e.g. `C:\RXDK\`). Must end with a backslash.
-- **RXGL** — the OpenGL→D3D8 shim, cloned as a **sibling directory** named `RXGL` next to this repo (see layout below)
+- **RXDK** — set the `RXDK_LIBS` environment variable to your install path (e.g. `C:\RXDK\`). Must end with a backslash.
+- **RXGL** — set the `RXGL_DIR` environment variable to your RXGL root (e.g. `C:\dev\RXGL\`). Must end with a backslash.
 
-## Directory layout
+### Environment variables
 
-The project expects RXGL to live one level up from this repo:
+| Variable | Example | Required |
+|----------|---------|----------|
+| `RXDK_LIBS` | `C:\RXDK\` | Yes |
+| `RXGL_DIR` | `C:\dev\RXGL\` | No — if omitted, RXGL is expected as a sibling directory named `RXGL` next to this repo |
+
+If you have RXGL cloned alongside this repo (sibling layout below), `RXGL_DIR` is not needed:
 
 ```
 your-folder\
-├── glsnake-xbox\       ← clone this repo here
-│   ├── glsnake.c
-│   ├── xbox\
-│   ├── GLSnake-Xbox.sln
-│   └── ...
-└── RXGL\               ← your existing RXGL checkout
+├── glsnake-xbox\       ← this repo
+└── RXGL\               ← RXGL root (sibling, no RXGL_DIR needed)
     └── RXGL\
         ├── rxgl_api.h
-        ├── rxgl_core.cpp
         └── ...
 ```
 
