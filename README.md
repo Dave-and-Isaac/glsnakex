@@ -56,16 +56,20 @@ git clone https://github.com/Dave-and-Isaac/glsnakex.git
 
 Open `GLSnake-Xbox.sln` in Visual Studio 2022, select **Release | Win32**, and build.
 
-After a successful build the deploy folder is ready at:
+After a successful build the output is at:
 
 ```
-bin\Release\Xbox\Deploy\
-    GLSnake.xbe
-    data\
-        models.glsnake
+bin\Release\Xbox\
+    Build\
+        GLSnake-Xbox\
+            default.xbe
+            data\
+                models.glsnake
+    XISO\
+        GLSnake-Xbox.iso
 ```
 
-Copy the `Deploy\` folder to your Xbox and launch `GLSnake.xbe`.
+FTP the `GLSnake-Xbox\` folder to your Xbox and launch `default.xbe`, or burn / mount `GLSnake-Xbox.iso`.
 
 > The **Debug** build links `xbdm.lib` and requires a debug-enabled kernel with
 > `xbdm.xbe` running on the console.
