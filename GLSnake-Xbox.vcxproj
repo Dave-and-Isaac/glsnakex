@@ -92,9 +92,7 @@
     <Link>
       <AdditionalDependencies>xapilibd.lib;d3d8d.lib;d3dx8d.lib;xgraphicsd.lib;xboxkrnl.lib;xbdm.lib;libcmtd.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(XboxSDKDir)lib</AdditionalLibraryDirectories>
-      <OutputFile>$(OutDir)GLSnake.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)GLSnake.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
       <StackReserveSize>4194304</StackReserveSize>
       <TargetMachine>MachineX86</TargetMachine>
@@ -103,12 +101,14 @@
       <AdditionalOptions>/ignore:4254 /FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
-      <Command>"$(RXDK_LIBS)bin\patchSubsystem.exe" -i="$(OutDir)GLSnake.exe" -s=0x000E
-"$(RXDK_LIBS)bin\imagebld.exe" /in:"$(OutDir)GLSnake.exe" /out:"$(OutDir)GLSnake.xbe" /nologo /stack:4194304 /debug /nolibwarn /testid:0xBEEF1235 /testname:GLSnake
-MKDIR "$(OutDir)Deploy" &gt;NUL 2&gt;&amp;1
-COPY /Y "$(OutDir)GLSnake.xbe" "$(OutDir)Deploy\GLSnake.xbe" &gt;NUL
-XCOPY /C /Q /I /E /S /Y "$(ProjectDir)data" "$(OutDir)Deploy\data\"</Command>
-      <Message>Patching PE, building XBE, staging deploy folder</Message>
+      <Command>"$(RXDK_LIBS)bin\patchSubsystem.exe" -i="$(OutDir)$(TargetFileName)" -s=0x000E
+"$(RXDK_LIBS)bin\imagebld.exe" /in:"$(OutDir)$(TargetFileName)" /out:"$(OutDir)$(TargetName).xbe" /nologo /stack:65536 /debug /nolibwarn
+MKDIR "$(OutDir)Build\$(ProjectName)" &gt;NUL 2&gt;&amp;1
+COPY /Y "$(OutDir)$(TargetName).xbe" "$(OutDir)Build\$(ProjectName)\default.xbe" &gt;NUL
+XCOPY /I /E /S /Y /F "$(ProjectDir)data" "$(OutDir)Build\$(ProjectName)\data\"
+MKDIR "$(OutDir)XISO" &gt;NUL 2&gt;&amp;1
+"$(RXDK_LIBS)bin\xdvdfs.exe" pack "$(OutDir)Build\$(ProjectName)" "$(OutDir)XISO\$(ProjectName).iso"</Command>
+      <Message>Patching PE, building XBE, staging deploy folder, packing ISO</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
 
@@ -135,7 +135,6 @@ XCOPY /C /Q /I /E /S /Y "$(ProjectDir)data" "$(OutDir)Deploy\data\"</Command>
     <Link>
       <AdditionalDependencies>xapilib.lib;d3d8.lib;d3dx8.lib;xgraphics.lib;xboxkrnl.lib;libcmt.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(XboxSDKDir)lib</AdditionalLibraryDirectories>
-      <OutputFile>$(OutDir)GLSnake.exe</OutputFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <StackReserveSize>4194304</StackReserveSize>
@@ -145,12 +144,14 @@ XCOPY /C /Q /I /E /S /Y "$(ProjectDir)data" "$(OutDir)Deploy\data\"</Command>
       <AdditionalOptions>/ignore:4254 /FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
-      <Command>"$(RXDK_LIBS)bin\patchSubsystem.exe" -i="$(OutDir)GLSnake.exe" -s=0x000E
-"$(RXDK_LIBS)bin\imagebld.exe" /in:"$(OutDir)GLSnake.exe" /out:"$(OutDir)GLSnake.xbe" /nologo /stack:4194304 /nolibwarn /testid:0xBEEF1235 /testname:GLSnake
-MKDIR "$(OutDir)Deploy" &gt;NUL 2&gt;&amp;1
-COPY /Y "$(OutDir)GLSnake.xbe" "$(OutDir)Deploy\GLSnake.xbe" &gt;NUL
-XCOPY /C /Q /I /E /S /Y "$(ProjectDir)data" "$(OutDir)Deploy\data\"</Command>
-      <Message>Patching PE, building XBE, staging deploy folder</Message>
+      <Command>"$(RXDK_LIBS)bin\patchSubsystem.exe" -i="$(OutDir)$(TargetFileName)" -s=0x000E
+"$(RXDK_LIBS)bin\imagebld.exe" /in:"$(OutDir)$(TargetFileName)" /out:"$(OutDir)$(TargetName).xbe" /nologo /stack:65536 /nolibwarn
+MKDIR "$(OutDir)Build\$(ProjectName)" &gt;NUL 2&gt;&amp;1
+COPY /Y "$(OutDir)$(TargetName).xbe" "$(OutDir)Build\$(ProjectName)\default.xbe" &gt;NUL
+XCOPY /I /E /S /Y /F "$(ProjectDir)data" "$(OutDir)Build\$(ProjectName)\data\"
+MKDIR "$(OutDir)XISO" &gt;NUL 2&gt;&amp;1
+"$(RXDK_LIBS)bin\xdvdfs.exe" pack "$(OutDir)Build\$(ProjectName)" "$(OutDir)XISO\$(ProjectName).iso"</Command>
+      <Message>Patching PE, building XBE, staging deploy folder, packing ISO</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
 
